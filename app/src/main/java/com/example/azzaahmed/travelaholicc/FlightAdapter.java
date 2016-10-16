@@ -25,9 +25,9 @@ public class FlightAdapter extends ArrayAdapter<Flight> {
 
         //  View customView = LayoutInflater.from(context).inflate(R.layout.result_list, parent, false);
         if (null == convertView) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.result_list, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.flight_result_list, parent, false);
         }
-
+View myView= LayoutInflater.from(context).inflate(R.layout.fragment_results, parent, false);
         String FlightName = getItem(position).getName();
         String FlightPrice=Double.toString(getItem(position).getPrice());
        TextView Flightprice = (TextView) convertView.findViewById(R.id.FlightPrice);
@@ -35,6 +35,7 @@ public class FlightAdapter extends ArrayAdapter<Flight> {
         //ImageView image = (ImageView) customView.findViewById(R.id.ssImage);
         Flightname.setText(FlightName);
         Flightprice.setText(FlightPrice);
+
 
         //image.setImageResource(R.drawable.chunky);
 

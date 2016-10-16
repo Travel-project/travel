@@ -9,13 +9,15 @@
     android:showDividers="middle"
     android:divider="?android:listDivider"
     android:dividerPadding="10dp"
-    android:background="@drawable/shadow_18">
+    android:background="@drawable/shadow_18"
+    android:id="@+id/ResultLayout">
 
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id="@+id/flightResultLayout">
 
         <TextView
         android:id="@+id/FlightName"
@@ -49,7 +51,8 @@
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id="@+id/hotelResultLayout">
 
     <ImageView
         android:id="@+id/HotelImage"

@@ -267,12 +267,12 @@ public final class R {
 	public static final class id {
 		public static final int country_code_picker_listview = 0x7f0c0081;
 		public static final int country_code_picker_search = 0x7f0c0080;
-		public static final int row_icon = 0x7f0c00ce;
-		public static final int row_title = 0x7f0c00cf;
+		public static final int row_icon = 0x7f0c00d1;
+		public static final int row_title = 0x7f0c00d2;
 	}
 	public static final class layout {
 		public static final int country_picker = 0x7f04001f;
-		public static final int row = 0x7f040041;
+		public static final int row = 0x7f040042;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f060043;

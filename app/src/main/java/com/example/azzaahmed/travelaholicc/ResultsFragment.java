@@ -1,5 +1,6 @@
 package com.example.azzaahmed.travelaholicc;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -49,6 +50,7 @@ boolean FetchHotelFlag=false;
     double budget;
     boolean checkFetchWhatArray[]=new boolean[2];
     private Bundle extras;
+    ProgressDialog progress;
     public ResultsFragment() {
     }
     // start to change ********************************
@@ -57,6 +59,11 @@ boolean FetchHotelFlag=false;
                              Bundle savedInstanceState) {
         //View rootView =inflater.inflate(R.layout.fragment_results, container, false);
         rootView = inflater.inflate(R.layout.fragment_results, container, false);
+         progress = new ProgressDialog(getActivity());
+        progress.setTitle("Loading");
+        progress.setMessage("Wait while loading...");
+        progress.show();
+        progress.setCancelable(false);
 //        context=getActivity();
 //        listView = (ListView) rootView.findViewById(R.id.listView);
 //        videoAdapter= new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1,videoArray);
@@ -65,7 +72,7 @@ boolean FetchHotelFlag=false;
         requestQueue = Volley.newRequestQueue(getActivity());
 
 
-         checkFetchWhatArray[0]=false;
+         checkFetchWhatArray[0]=true;
         checkFetchWhatArray[1]=true;
   //      checkFetchWhatArray= getArguments().getBooleanArray("checkFetchWhat");
 if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
@@ -74,7 +81,7 @@ if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
         requestHotel();
         else {requestFlight();
     requestHotel();}
-         budget = 4000000;
+         budget = 5000000;
 //        requestFlight();
 // requestHotel();
 
@@ -306,6 +313,7 @@ private void ViewUpdate( ){
                 }
             }
         }
+    progress.dismiss();
 
         ListAdapter HotelAdapter = new ResultsAdapter(getContext(), HotelFlightList);
         ListView HotelsListView = (ListView) rootView.findViewById(R.id.listview_results);
@@ -323,21 +331,11 @@ private void ViewUpdate( ){
 
             }
 
-
-
-
     private void ViewHotels( ){
 
         Collections.sort(hotelArrayList);
 
         Log.d("array check fetch", "in create" + hotelArrayList.size());
-//        for (int i = 0; i < hotelArrayList.size(); i++) {
-//
-//                     hotelArrayList.add(new Hotel(hotelArrayList.get(i).getName(),hotelArrayList.get(i).getCity(),hotelArrayList.get(i).getCurrency(),hotelArrayList.get(i).getPrice(),hotelArrayList.get(i).getImage_path(),hotelArrayList.get(i).getCountry(),hotelArrayList.get(i).getRate()));
-//                    Log.d("array check fetch", "hotel in loop add");
-//
-//            }
-
 
         ListAdapter HotelAdapter = new HotelAdapter(getContext(),hotelArrayList);
         ListView HotelsListView = (ListView) rootView.findViewById(R.id.listview_results);
@@ -356,17 +354,11 @@ private void ViewUpdate( ){
     }
 
 
-    private void ViewFlights( ){
+    private void ViewFlights(){
 
         Collections.sort(flightArrayList);
 
         Log.d("array check fetch", "in create" + flightArrayList.size());
-
-//        for (int i = 0; i < flightArrayList.size(); i++) {
-//            flightArrayList.add(new Flight(flightArrayList.get(i).getOrigin(),flightArrayList.get(i).getDestination(),flightArrayList.get(i).getDepart_date(),flightArrayList.get(i).getReturn_date(),flightArrayList.get(i).getCurrency(),flightArrayList.get(i).getPrice(),flightArrayList.get(i).getTrip_class()));
-//            Log.d("array check fetch ", " flight add= " + i);
-//
-//        }
 
 
         ListAdapter HotelAdapter = new FlightAdapter(getContext(),flightArrayList);

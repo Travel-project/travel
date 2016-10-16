@@ -32,6 +32,7 @@ public class HotelAdapter extends ArrayAdapter<Hotel>
             if (null == convertView) {
                 convertView = LayoutInflater.from(context).inflate(R.layout.result_list, parent, false);
             }
+            convertView.findViewById(R.id.flightResultLayout).setVisibility(View.GONE);
             String HotelName = getItem(position).getName();
             String HotelPrice=Double.toString(getItem(position).getPrice());
 
