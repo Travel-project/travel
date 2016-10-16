@@ -1,0 +1,286 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical"
+    tools:context="com.esraa.travelaholic.Search">
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/search"-->
+    <!--android:textSize="40dp"-->
+    <!--android:textStyle="bold"-->
+    <!--android:layout_centerInParent="true"/>-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/pick_date_from"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:clickable="true"
+                    android:layout_weight="1"/>
+
+
+
+                <EditText
+                    android:id="@+id/pick_date_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:clickable="true"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pick_country_from"/>
+                    <ImageView
+                        android:id="@+id/row_icon_from"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"/>
+
+                    <EditText
+                        android:id="@+id/pick_country_from"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:clickable="true"
+                        android:layout_weight="2"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pick_country_to"/>
+                    <ImageView
+                        android:id="@+id/row_icon_to"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"/>
+                    <EditText
+                        android:id="@+id/pick_country_to"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:clickable="true"
+                        android:layout_weight="2"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/pick_city_from"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="from city..."
+                    android:textColorHint="@color/hintColor"
+                    android:layout_weight="1"/>
+
+                <EditText
+                    android:id="@+id/pick_city_to"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="to city..."
+                    android:textColorHint="@color/hintColor"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+            <EditText
+                android:id="@+id/budget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="your budget in $"
+                android:textColorHint="@color/hintColor"
+                android:digits="0123456789"
+                android:inputType="number"
+                android:layout_marginTop="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+                <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                    android:id="@+id/android_material_design_spinner_adults"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="adults (+18)"
+                    android:textColorHint="@color/hintColor"
+                    app:met_floatingLabel="normal"
+                    android:layout_weight="1"/>
+                <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                    android:id="@+id/android_material_design_spinner_children"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="children"
+                    android:textColorHint="@color/hintColor"
+                    app:met_floatingLabel="normal"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+
+            <RadioGroup
+                android:id="@+id/options_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp">
+
+                <RadioButton
+                    android:id="@+id/flights_only"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Flights only"
+                    android:theme="@style/MyRadioButton"/>
+                <RadioButton
+                    android:id="@+id/hotels_only"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hotels only"
+                    android:theme="@style/MyRadioButton"/>
+                <RadioButton
+                    android:id="@+id/flights_and_hotels"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Flights and Hotels"
+                    android:checked="true"
+                    android:theme="@style/MyRadioButton"/>
+            </RadioGroup>
+
+            <!--from here we will diff. the hotels from flights ...-->
+            <!--***************************************************-->
+
+            <!--This for just flights ...-->
+            <!--***************************************************-->
+            <LinearLayout
+                android:id="@+id/flights"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="6"
+                        android:text="Flight"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="Economy"
+                            android:theme="@style/MyCheckBox"/>
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:text="Business"
+                            android:theme="@style/MyCheckBox"/>
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:text="First class"
+                            android:theme="@style/MyCheckBox"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--This for just hotels ...-->
+            <!--***************************************************-->
+            <LinearLayout
+                android:id="@+id/hotels"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/number_of_rooms"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="number of rooms"
+                    android:layout_marginTop="16dp"
+                    android:digits="0123456789"
+                    android:inputType="number"
+                    />
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    android:theme="@style/RatingBar"
+                    android:rating="3.5"
+                    android:stepSize="0.5"
+                    android:numStars="5"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="SEARCH"
+                android:textSize="14sp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:theme="@style/MyButton"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
