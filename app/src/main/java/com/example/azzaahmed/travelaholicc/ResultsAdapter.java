@@ -5,7 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -43,9 +46,9 @@ public class ResultsAdapter extends ArrayAdapter<HotelFlight> {
         Name.setText(HotelName);
         //image.setImageResource(R.drawable.chunky);
 
-//        Picasso.with(context)
-//                .load(getItem(position).getImage_path()).resize(300, 450)
-//                .into((ImageView) convertView.findViewById(R.id.HotelImage));
+        Picasso.with(context)
+                .load(getItem(position).getImagePath()).resize(300, 450)
+                .into((ImageView) convertView.findViewById(R.id.HotelImage));
         return convertView;
     }
 }

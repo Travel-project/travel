@@ -51,7 +51,7 @@
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.azzaahmed.travelaholicc.Home" />
+                android:value="com.example.azzaahmed.travelaholicc.HomeActivity" />
         </activity>
         <activity
             android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"

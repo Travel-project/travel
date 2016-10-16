@@ -47,6 +47,8 @@ boolean FetchHotelFlag=false;
     boolean FetchedData=false;
     View rootView;
     double budget;
+    boolean checkFetchWhatArray[]=new boolean[2];
+    private Bundle extras;
     public ResultsFragment() {
     }
     // start to change ********************************
@@ -62,9 +64,19 @@ boolean FetchHotelFlag=false;
 
         requestQueue = Volley.newRequestQueue(getActivity());
 
+
+         checkFetchWhatArray[0]=false;
+        checkFetchWhatArray[1]=true;
+  //      checkFetchWhatArray= getArguments().getBooleanArray("checkFetchWhat");
+if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
         requestFlight();
+        else if(!checkFetchWhatArray[0]&&checkFetchWhatArray[1])
         requestHotel();
+        else {requestFlight();
+    requestHotel();}
          budget = 4000000;
+//        requestFlight();
+// requestHotel();
 
 //        HotelFlight obj1=new HotelFlight(1202133,"path","movenpick",3.5,12530,2,"Flydubai F212",(double)3000);
 //        HotelFlight obj2=new HotelFlight(1202133,"path","hilton",4,500,1,"Misr Airlines 999",(double)5000);
@@ -153,7 +165,13 @@ boolean FetchHotelFlag=false;
 //                        videoArray.add(result.getJSONObject(i).getString("province_name"));
                     }
                     FetchHotelFlag=true;
-                  if(FetchHotelFlag&&FetchFlightFlag) ViewUpdate();
+               //     if(FetchHotelFlag&&FetchFlightFlag) ViewUpdate();
+                 if(checkFetchWhatArray[1]&&!checkFetchWhatArray[0]) ViewHotels();
+
+                 else if(checkFetchWhatArray[1]&&checkFetchWhatArray[0]) {
+
+                     if(FetchHotelFlag&&FetchFlightFlag) ViewUpdate();
+                 }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -192,7 +210,13 @@ boolean FetchHotelFlag=false;
 //                    videoArray.add(flights.getJSONObject("2").getString("airline"));
                     }
                     FetchFlightFlag=true;
-                   if(FetchHotelFlag&&FetchFlightFlag) ViewUpdate();
+          //      if(FetchHotelFlag&&FetchFlightFlag) ViewUpdate();
+                    if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1]) ViewFlights();
+
+                    else if(checkFetchWhatArray[1]&&checkFetchWhatArray[0]) {
+
+                        if(FetchHotelFlag&&FetchFlightFlag) ViewUpdate();
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -261,40 +285,105 @@ boolean FetchHotelFlag=false;
         return new Hotel(name,city,currency,price,image_path,regional,rate);
 
     }
-private void ViewUpdate(){
+    //private void ViewUpdate(String FetchWhat ){
+private void ViewUpdate( ){
    //     while(!FetchedData){
             //if(FetchHotelFlag&&FetchFlightFlag){
                // FetchedData=true;
-                Collections.sort(hotelArrayList);
-                Collections.sort(flightArrayList);
-                Log.d("array check fetch", "in create" + hotelArrayList.size() + "   " + flightArrayList.size());
-                for (int i = 0; i < hotelArrayList.size(); i++) {
+    //if(FetchWhat.equals("HotelsAndFlights")) {
+        Collections.sort(hotelArrayList);
+        Collections.sort(flightArrayList);
+        Log.d("array check fetch", "in create" + hotelArrayList.size() + "   " + flightArrayList.size());
+        for (int i = 0; i < hotelArrayList.size(); i++) {
 
-                    for (int j = 0; j < flightArrayList.size(); j++) {
-                        if (hotelArrayList.get(i).getPrice() + flightArrayList.get(j).getPrice() <= budget) {
-                            //  HotelFlightList.add(new HotelFlight(HotelList.get(i).getHotel_id(),HotelList.get(i).getImage_path(),HotelList.get(i).getName(),HotelList.get(i).getRate(),HotelList.get(i).getPrice(),HotelList.get(i).getRoom_capacity(),FlightList.get(j).getFlightName(),FlightList.get(j).getFlightPrice()));
-                            HotelFlightList.add(new HotelFlight(flightArrayList.get(j), hotelArrayList.get(i)));
-                            Log.d("array check fetch", "in loop add");
-                        } else {
-                            j = flightArrayList.size();
-                        }
+            for (int j = 0; j < flightArrayList.size(); j++) {
+                if (hotelArrayList.get(i).getPrice() + flightArrayList.get(j).getPrice() <= budget) {
+                    //  HotelFlightList.add(new HotelFlight(HotelList.get(i).getHotel_id(),HotelList.get(i).getImage_path(),HotelList.get(i).getName(),HotelList.get(i).getRate(),HotelList.get(i).getPrice(),HotelList.get(i).getRoom_capacity(),FlightList.get(j).getFlightName(),FlightList.get(j).getFlightPrice()));
+                    HotelFlightList.add(new HotelFlight(flightArrayList.get(j), hotelArrayList.get(i)));
+                    Log.d("array check fetch", "in loop add");
+                } else {
+                    j = flightArrayList.size();
+                }
+            }
+        }
+
+        ListAdapter HotelAdapter = new ResultsAdapter(getContext(), HotelFlightList);
+        ListView HotelsListView = (ListView) rootView.findViewById(R.id.listview_results);
+        HotelsListView.setAdapter(HotelAdapter);
+
+        HotelsListView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String food = String.valueOf(parent.getItemAtPosition(position));
+                        //Toast.makeText(MainActivity.this, food, Toast.LENGTH_LONG).show();
                     }
                 }
+        );
 
-                ListAdapter HotelAdapter = new ResultsAdapter(getContext(), HotelFlightList);
-                ListView HotelsListView = (ListView) rootView.findViewById(R.id.listview_results);
-                HotelsListView.setAdapter(HotelAdapter);
-
-                HotelsListView.setOnItemClickListener(
-                        new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                String food = String.valueOf(parent.getItemAtPosition(position));
-                                //Toast.makeText(MainActivity.this, food, Toast.LENGTH_LONG).show();
-                            }
-                        }
-                );
             }
+
+
+
+
+    private void ViewHotels( ){
+
+        Collections.sort(hotelArrayList);
+
+        Log.d("array check fetch", "in create" + hotelArrayList.size());
+//        for (int i = 0; i < hotelArrayList.size(); i++) {
+//
+//                     hotelArrayList.add(new Hotel(hotelArrayList.get(i).getName(),hotelArrayList.get(i).getCity(),hotelArrayList.get(i).getCurrency(),hotelArrayList.get(i).getPrice(),hotelArrayList.get(i).getImage_path(),hotelArrayList.get(i).getCountry(),hotelArrayList.get(i).getRate()));
+//                    Log.d("array check fetch", "hotel in loop add");
+//
+//            }
+
+
+        ListAdapter HotelAdapter = new HotelAdapter(getContext(),hotelArrayList);
+        ListView HotelsListView = (ListView) rootView.findViewById(R.id.listview_results);
+        HotelsListView.setAdapter(HotelAdapter);
+
+        HotelsListView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String food = String.valueOf(parent.getItemAtPosition(position));
+                        //Toast.makeText(MainActivity.this, food, Toast.LENGTH_LONG).show();
+                    }
+                }
+        );
+
+    }
+
+
+    private void ViewFlights( ){
+
+        Collections.sort(flightArrayList);
+
+        Log.d("array check fetch", "in create" + flightArrayList.size());
+
+//        for (int i = 0; i < flightArrayList.size(); i++) {
+//            flightArrayList.add(new Flight(flightArrayList.get(i).getOrigin(),flightArrayList.get(i).getDestination(),flightArrayList.get(i).getDepart_date(),flightArrayList.get(i).getReturn_date(),flightArrayList.get(i).getCurrency(),flightArrayList.get(i).getPrice(),flightArrayList.get(i).getTrip_class()));
+//            Log.d("array check fetch ", " flight add= " + i);
+//
+//        }
+
+
+        ListAdapter HotelAdapter = new FlightAdapter(getContext(),flightArrayList);
+        ListView HotelsListView = (ListView) rootView.findViewById(R.id.listview_results);
+        HotelsListView.setAdapter(HotelAdapter);
+
+        HotelsListView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String food = String.valueOf(parent.getItemAtPosition(position));
+                        //Toast.makeText(MainActivity.this, food, Toast.LENGTH_LONG).show();
+                    }
+                }
+        );
+
+    }
 
         }
    // }}

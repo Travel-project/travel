@@ -18,6 +18,19 @@ public class ResultsActivity extends AppCompatActivity {
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
+
+//        if (savedInstanceState == null) {
+//            ResultsFragment results = new ResultsFragment();
+//            results.setArguments(getIntent().getExtras());
+//            getSupportFragmentManager().beginTransaction()
+//                    .add(R.id.ResultsContainer, results)
+//                    .commit();
+//        }
+
+
     }
 
 }

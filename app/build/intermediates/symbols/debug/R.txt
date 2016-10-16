@@ -1046,6 +1046,7 @@ int id FlightPrice 0x7f0c00ca
 int id HotelImage 0x7f0c00cb
 int id HotelName 0x7f0c00cc
 int id HotelPrice 0x7f0c00cd
+int id ResultsContainer 0x7f0c007f
 int id action0 0x7f0c00bc
 int id action_bar 0x7f0c0063
 int id action_bar_activity_content 0x7f0c0000
@@ -1129,7 +1130,6 @@ int id fixed 0x7f0c0041
 int id flights 0x7f0c009c
 int id flights_and_hotels 0x7f0c009b
 int id flights_only 0x7f0c0099
-int id fragment 0x7f0c007f
 int id google_icon 0x7f0c0077
 int id highlight 0x7f0c0035
 int id home 0x7f0c0004

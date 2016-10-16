@@ -3022,6 +3022,7 @@ containing a value of this type.
         public static final int HotelImage=0x7f0c00cb;
         public static final int HotelName=0x7f0c00cc;
         public static final int HotelPrice=0x7f0c00cd;
+        public static final int ResultsContainer=0x7f0c007f;
         public static final int action0=0x7f0c00bc;
         public static final int action_bar=0x7f0c0063;
         public static final int action_bar_activity_content=0x7f0c0000;
@@ -3105,7 +3106,6 @@ containing a value of this type.
         public static final int flights=0x7f0c009c;
         public static final int flights_and_hotels=0x7f0c009b;
         public static final int flights_only=0x7f0c0099;
-        public static final int fragment=0x7f0c007f;
         public static final int google_icon=0x7f0c0077;
         public static final int highlight=0x7f0c0035;
         public static final int home=0x7f0c0004;

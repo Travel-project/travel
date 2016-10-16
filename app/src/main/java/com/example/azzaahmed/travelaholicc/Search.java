@@ -198,12 +198,14 @@ public class Search extends Fragment implements
             @Override
             public void onClick(View v) {
                 // start result activity here
+             // boolean checkFetchWhat[]={true,false};
                 Intent myIntent = new Intent(getActivity(), ResultsActivity.class);
+                        //.putExtra("checkFetchWhat",checkFetchWhat);
                // myIntent.putExtra("key", value); //Optional parameters
-                getActivity().startActivity(myIntent);
+               // getActivity().
+                        startActivity(myIntent);
             }
         });
-
 
         return view;
     }

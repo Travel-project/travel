@@ -75,4 +75,9 @@ public class HotelFlight implements Serializable
             //return FlightPrice;
             return flight.getPrice();
         }
+        public String getImagePath() {
+
+            //return FlightPrice;
+            return hotel.getImage_path();
+        }
     }

@@ -14,6 +14,9 @@ public class Flight  implements Serializable, Comparable <Flight>
     private String return_date;
     private String currency;
     private double price;
+
+
+
     private String airline;
     private String flight_number;
     private String image_path;
@@ -37,9 +40,46 @@ public class Flight  implements Serializable, Comparable <Flight>
         return price;
     }
     public String getName() {
-      //  return price;
+
         return origin+"  "+destination;
     }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public String getDepart_date() {
+        return depart_date;
+    }
+
+    public String getReturn_date() {
+        return return_date;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public String getAirline() {
+        return airline;
+    }
+
+    public String getFlight_number() {
+        return flight_number;
+    }
+
+    public String getImage_path() {
+        return image_path;
+    }
+
+    public int getTrip_class() {
+        return trip_class;
+    }
+
     @Override
     public int compareTo(Flight another) {
         if(price==another.price) return 0;

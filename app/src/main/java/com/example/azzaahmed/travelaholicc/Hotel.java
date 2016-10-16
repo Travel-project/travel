@@ -13,9 +13,7 @@ public class Hotel implements Serializable, Comparable <Hotel>
         return city;
     }
 
-    public Double getPrice() {
-        return price;
-    }
+
 
     public String getCountry() {
         return country;
@@ -26,11 +24,23 @@ public class Hotel implements Serializable, Comparable <Hotel>
     String enddate;
     String night;
     String room;
-    String currency;
+   private String currency;
    private Double price;
     String regional;
-    String image_path;
-    double rate;
+
+
+
+    private String image_path;
+
+    public double getRate() {
+        return rate;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    private double rate;
     int adult;
     int child;
     private String name;
@@ -38,13 +48,20 @@ public class Hotel implements Serializable, Comparable <Hotel>
     public String getName() {
         return name;
     }
+    public String getImage_path() {
+        return image_path;
+    }
+    public Double getPrice() {
+        return price;
+    }
 
-    Hotel(String name,String city,String currency,Double price,String image_path,String regional,double rate){
+    Hotel(String name,String city,String currency,Double price,String image_path,String country,double rate){
         this.city=city;
         this.currency=currency;
         this.price=price;
         this.image_path=image_path;
         this.rate=rate;
+        this.country=country;
 
         this.name=name;
     }
