@@ -355,6 +355,7 @@ android/support/v4/app/FragmentManagerImpl$4.class
 com/example/azzaahmed/travelaholicc/R$menu.class
 android/support/v4/media/MediaMetadataCompat$BitmapKey.class
 com/google/android/gms/common/api/GoogleApiActivity.class
+com/google/android/gms/common/api/GoogleApiClient$ConnectionCallbacks.class
 android/support/v4/os/TraceCompat.class
 android/support/design/widget/AppBarLayout$Behavior$DragCallback.class
 android/support/annotation/FloatRange.class

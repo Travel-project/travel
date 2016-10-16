@@ -1,5 +1,6 @@
 package com.example.azzaahmed.travelaholicc;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -18,8 +19,9 @@ public class HomeActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private int[] tabIcons = {
-            R.drawable.ic_tab_plan,
-            R.drawable.ic_tab_search
+
+            R.drawable.ic_tab_search,
+            R.drawable.ic_tab_plan
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +47,9 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Plans(), "Plans");
         adapter.addFragment(new Search(), "Search");
+        adapter.addFragment(new Plans(), "Plans");
+
         viewPager.setAdapter(adapter);
     }
 
@@ -99,8 +102,8 @@ public class HomeActivity extends AppCompatActivity {
         }
         else  if (id == R.id.action_signout) {
 //            //startActivity(new Intent(this, SettingsActivity.class));
-////            Intent intent = new Intent(this, MainActivity.class).putExtra("SignOut_flag","true");
-////           startActivity(intent);
+            Intent intent = new Intent(this, MainActivity.class).putExtra("SignOut_flag","true");
+           startActivity(intent);
 //            MyApplication   myApp = (MyApplication)getApplicationContext();
 //
 //          //  (MainActivity() getActivity()).signOut();
@@ -131,7 +134,9 @@ public class HomeActivity extends AppCompatActivity {
 //            mid.setText(String.format("id as %s", currentUser.getId()));
 //
 //            mStatus.setText(String.format("Signed In to G+ as %s", emailaddress));
+
             return true;
+
         }
 
         return super.onOptionsItemSelected(item);

@@ -13,7 +13,7 @@ public class Utility {
     public static String URL_TIKET_HOTELS_REQ = "http://api-sandbox.tiket.com/search/hotel?q=";
 
     public static String setUrlTravelpayoutsFlightReqCheap(String origin,String destination,String depart_date,String return_date,String currency, int trip_class) {
-        URL_TRAVELPAYOUTS_FLIGHT_REQ_CHEAP = URL_TRAVELPAYOUTS_FLIGHT_REQ_CHEAP+"origin="+origin+"&destination="+destination+"&depart_date="+depart_date+"&return_date="+return_date+"&currency="+currency+"&trip_class="+trip_class+"&page=1&limit=30&sorting=price&token="+TRAVELPAYOUTS_TOKEN_FLIGHT;
+        URL_TRAVELPAYOUTS_FLIGHT_REQ_CHEAP = URL_TRAVELPAYOUTS_FLIGHT_REQ_CHEAP+"origin="+origin+"&destination="+destination+"&depart_date="+depart_date+"&return_date="+return_date+"&currency="+currency+"&trip_class="+trip_class+"&page=1&limit=10&sorting=price&token="+TRAVELPAYOUTS_TOKEN_FLIGHT;
         return URL_TRAVELPAYOUTS_FLIGHT_REQ_CHEAP;
     }
     public static String setUrlTiketHotelsReq(String country,String startdate,String enddate,int night,int rooms,int adult,int child) {

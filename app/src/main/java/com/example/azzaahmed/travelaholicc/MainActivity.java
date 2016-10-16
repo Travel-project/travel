@@ -22,7 +22,7 @@ import com.google.android.gms.common.api.Status;
  * Activity to demonstrate basic retrieval of the Google user's ID, email address, and basic
  * profile.
  */
-public class MainActivity extends AppCompatActivity implements
+public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         View.OnClickListener {
 
@@ -39,9 +39,9 @@ private Bundle extras;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//         Intent myIntent = getIntent(); // gets the previously created intent
-//              String SignOut_flag = myIntent.getStringExtra("SignOut_flag");
-//        extras = getIntent().getExtras();
+         Intent myIntent = getIntent(); // gets the previously created intent
+             // String SignOut_flag = myIntent.getStringExtra("SignOut_flag");
+        extras = getIntent().getExtras();
 
         Log.d(TAG, "in create");
             // Views
@@ -69,6 +69,8 @@ private Bundle extras;
        mGoogleApiClient  = new GoogleApiClient.Builder(this)
                     .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                     .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+               .addConnectionCallbacks(this)
+               .addOnConnectionFailedListener(this)
                     .build();
             // [END build_client]
 
@@ -89,35 +91,59 @@ private Bundle extras;
     @Override
     public void onStart() {
         super.onStart();
+        Log.d(TAG, "in start and " + mGoogleApiClient.isConnected());
 
+        if (extras != null) {
+            Log.d(TAG, "in extra and " + mGoogleApiClient.isConnected());
+
+            String SignOut_flag = extras.getString("SignOut_flag");
+        if(SignOut_flag.equals("true"))
+        mGoogleApiClient.connect();
+        }
        // mGoogleApiClient= myApp.mGoogleApiClient;
 
-        Log.d(TAG, "in start and "+mGoogleApiClient.isConnected());
+       else {
+            Log.d(TAG, "out  extra and " + mGoogleApiClient.isConnected());
+            OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient);
 
-        OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient);
+            if (opr.isDone()) {
+                // If the user's cached credentials are valid, the OptionalPendingResult will be "done"
+                // and the GoogleSignInResult will be available instantly.
+                Log.d(TAG, "Got cached sign-in  and" + mGoogleApiClient.isConnected());
 
-        if (opr.isDone()) {
-            // If the user's cached credentials are valid, the OptionalPendingResult will be "done"
-            // and the GoogleSignInResult will be available instantly.
-            Log.d(TAG, "Got cached sign-in  and"+mGoogleApiClient.isConnected());
-
-        GoogleSignInResult result = opr.get();
+                GoogleSignInResult result = opr.get();
                 handleSignInResult(result);
+                //    mGoogleApiClient.connect();
+            } else {
+                Log.d(TAG, "NOT  cached sign-in  and" + mGoogleApiClient.isConnected());
+                // If the user has not previously signed in on this device or the sign-in has expired,
+                // this asynchronous branch will attempt to sign in the user silently.  Cross-device
+                // single sign-on will occur in this branch.
+                showProgressDialog();
+                opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
+                    @Override
+                    public void onResult(GoogleSignInResult googleSignInResult) {
+                        hideProgressDialog();
+                        handleSignInResult(googleSignInResult);
+                    }
+                });
+            }
 
-        } else {
-            // If the user has not previously signed in on this device or the sign-in has expired,
-            // this asynchronous branch will attempt to sign in the user silently.  Cross-device
-            // single sign-on will occur in this branch.
-            showProgressDialog();
-            opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
-                @Override
-                public void onResult(GoogleSignInResult googleSignInResult) {
-                    hideProgressDialog();
-                    handleSignInResult(googleSignInResult);
-                }
-            });
         }
     }
+//    @Override
+//    public void onConnected(Bundle connectionHint) {
+//        // Reaching onConnected means we consider the user signed in.
+//        Log.d(TAG, "onConnected");
+//
+//
+//    }
+
+
+//    @Override
+//    public void onConnectionSuspended(int i) {
+//        mGoogleApiClient.connect();
+//    }
 
     // [START onActivityResult]
     @Override
@@ -156,15 +182,16 @@ private Bundle extras;
 //
 //                    Log.d(TAG, "after stop a connection " + mGoogleApiClient.isConnected());
 //                 //   findViewById(R.id.sign_out_button).performClick();
-//                    mStatusTextView.setText( acct.getDisplayName());
+//                  //  mStatusTextView.setText( acct.getDisplayName());
+//                    signOut();
 //                }
 //                else  Log.d(TAG, "in the condition not null bs msh true");
 //
 //            }
-        //    else {
-//                Log.d(TAG, "sent to home");
+      //      else {
+                Log.d(TAG, "sent to home");
          startActivity(new Intent(this, HomeActivity.class));
-       //   }
+    //   }
         } else {
             // Signed out, show unauthenticated UI.
             Log.d(TAG, "signed out un auth UI and" + mGoogleApiClient.isConnected());
@@ -182,8 +209,9 @@ private Bundle extras;
     // [END signIn]
 
     // [START signOut]
-    public  void signOut() {
-        Log.d(TAG, "in sign out and"+mGoogleApiClient.isConnected());
+    private  void signOut() {
+
+        Log.d(TAG, "in sign out and" + mGoogleApiClient.isConnected());
         Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
                 new ResultCallback<Status>() {
                     @Override
@@ -193,6 +221,8 @@ private Bundle extras;
                         // [END_EXCLUDE]
                     }
                 });
+//        mGoogleApiClient.disconnect();
+//        mGoogleApiClient.connect();
         Log.d(TAG, "in sign out2 and" + mGoogleApiClient.isConnected());
     }
     // [END signOut]
@@ -218,6 +248,7 @@ private Bundle extras;
         // An unresolvable error has occurred and Google APIs (including Sign-In) will not
         // be available.
         Log.d(TAG, "onConnectionFailed:" + connectionResult);
+      //  mGoogleApiClient.connect();
     }
 
     private void showProgressDialog() {
@@ -261,5 +292,22 @@ private Bundle extras;
                 revokeAccess();
                 break;
         }
+    }
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        Log.d(TAG, "onConnect " );
+
+        if (extras != null) {        String SignOut_flag = extras.getString("SignOut_flag");
+        if(SignOut_flag.equals("true")){
+            Log.d(TAG, "onConnect and if flag true  " );
+        signOut();
+    }
+    }
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+mGoogleApiClient.connect();
     }
 }
