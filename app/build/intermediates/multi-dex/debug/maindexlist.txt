@@ -1,5 +1,6 @@
 
 android/support/v4/app/BackStackRecord.class
+com/squareup/picasso/Picasso$Builder.class
 android/support/v4/widget/SlidingPaneLayout.class
 android/support/v4/app/FragmentManagerState.class
 android/support/design/widget/Snackbar$2.class
@@ -223,6 +224,7 @@ com/google/android/gms/common/api/Api$ApiOptions.class
 android/support/v4/app/Fragment.class
 com/google/android/gms/auth/api/signin/internal/zzi.class
 android/support/design/widget/AppBarLayout$1.class
+com/squareup/picasso/Downloader$Response.class
 com/google/android/gms/plus/internal/model/people/PersonEntity$UrlsEntity.class
 android/support/v4/view/ViewPager.class
 android/support/v4/app/FragmentManagerImpl$5.class
@@ -425,6 +427,7 @@ com/google/android/gms/common/data/DataBuffer.class
 com/google/android/gms/common/zzc.class
 com/google/android/gms/common/api/OptionalPendingResult.class
 android/support/v4/media/session/PlaybackStateCompat$Actions.class
+com/squareup/picasso/RequestCreator.class
 android/support/v7/widget/OpReorderer$Callback.class
 android/support/v4/app/FragmentManagerImpl$2.class
 android/support/v7/widget/ViewInfoStore$ProcessCallback.class
@@ -457,6 +460,7 @@ android/support/design/widget/CoordinatorLayout.class
 android/support/v7/widget/RecyclerView$LayoutManager.class
 com/example/azzaahmed/travelaholicc/MainActivity$2.class
 android/support/v7/widget/RecyclerView$ItemAnimator$AdapterChanges.class
+com/squareup/picasso/Picasso.class
 com/example/azzaahmed/travelaholicc/R$drawable.class
 android/support/v4/view/ViewCompat$ScrollIndicators.class
 android/support/design/R.class

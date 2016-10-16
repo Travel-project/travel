@@ -33,13 +33,20 @@ public class Hotel implements Serializable, Comparable <Hotel>
     double rate;
     int adult;
     int child;
+    private String name;
 
-    Hotel(String city,String currency,Double price,String image_path,String regional,double rate){
+    public String getName() {
+        return name;
+    }
+
+    Hotel(String name,String city,String currency,Double price,String image_path,String regional,double rate){
         this.city=city;
         this.currency=currency;
         this.price=price;
         this.image_path=image_path;
         this.rate=rate;
+
+        this.name=name;
     }
 
     @Override

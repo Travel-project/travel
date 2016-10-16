@@ -241,6 +241,7 @@ boolean FetchHotelFlag=false;
 //        String enddate;
 //        String night;
 //        String room;
+       String name;
         String currency;
         double price;
         String image_path;
@@ -255,8 +256,9 @@ boolean FetchHotelFlag=false;
         price = results.getJSONObject(index).getDouble("total_price");
         regional = results.getJSONObject(index).getString("regional");
         image_path = results.getJSONObject(index).getString("photo_primary");
+        name=results.getJSONObject(index).getString("name");
 
-        return new Hotel(city,currency,price,image_path,regional,rate);
+        return new Hotel(name,city,currency,price,image_path,regional,rate);
 
     }
 private void ViewUpdate(){
