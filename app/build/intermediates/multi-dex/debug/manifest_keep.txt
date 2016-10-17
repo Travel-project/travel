@@ -1,7 +1,3 @@
--keep class com.example.azzaahmed.travelaholicc.MyApplication {
-    <init>();
-    void attachBaseContext(android.content.Context);
-}
 -keep class com.example.azzaahmed.travelaholicc.MainActivity { <init>(); }
 -keep class com.example.azzaahmed.travelaholicc.HomeActivity { <init>(); }
 -keep class com.example.azzaahmed.travelaholicc.ResultsActivity { <init>(); }

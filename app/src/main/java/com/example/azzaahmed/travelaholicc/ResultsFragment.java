@@ -64,10 +64,6 @@ boolean FetchHotelFlag=false;
         progress.setMessage("Wait while loading...");
         progress.show();
         progress.setCancelable(false);
-//        context=getActivity();
-//        listView = (ListView) rootView.findViewById(R.id.listView);
-//        videoAdapter= new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1,videoArray);
-////        listView.setAdapter(videoAdapter);
 
         requestQueue = Volley.newRequestQueue(getActivity());
 
@@ -105,26 +101,6 @@ if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
 //        );
 
 
-
-//        ResultAdapter =
-//                new ArrayAdapter<Hotel>(
-//                        getActivity(), // The current context (this activity)
-//                        R.layout.result_list, // The name of the layout ID.
-//                        R.id., // The ID of the textview to populate.
-//                        new ArrayList<String>());
-//        // weekForecast);
-//        ListView list = (ListView) rootView.findViewById(R.id.listview_forecast);
-//        list.setAdapter(ForecastAdapter);
-//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-//                String forecast =ForecastAdapter.getItem(position);
-//                Toast.makeText(getActivity(), forecast, Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(getActivity(),DetailActivity.class).putExtra(Intent.EXTRA_TEXT,forecast);
-//                startActivity(intent);
-//            }
-//        });
         return rootView;
 
 
@@ -277,19 +253,20 @@ if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
         double price;
         String image_path;
         String regional;
-        double rate;
+        String rate;
+        String rating;
 //        int adult;
 //        int child;
 
         currency = "USD";
         city = results.getJSONObject(index).getString("province_name");
-        rate = Double.parseDouble(results.getJSONObject(index).getString("star_rating"));
+        rate = results.getJSONObject(index).getString("star_rating");
         price = results.getJSONObject(index).getDouble("total_price");
         regional = results.getJSONObject(index).getString("regional");
         image_path = results.getJSONObject(index).getString("photo_primary");
         name=results.getJSONObject(index).getString("name");
-
-        return new Hotel(name,city,currency,price,image_path,regional,rate);
+        rating=results.getJSONObject(index).getString("rating");
+        return new Hotel(name,city,currency,price,image_path,regional,rate,rating);
 
     }
     //private void ViewUpdate(String FetchWhat ){

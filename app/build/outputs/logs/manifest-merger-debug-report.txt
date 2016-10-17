@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:2:1-51:12
+ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:2:1-50:12
 	package
 		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:3:5-50
 		INJECTED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml
@@ -26,7 +26,7 @@ ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifes
 	android:name
 		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:7:22-71
 application
-ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:9:5-49:19
+ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:9:5-48:19
 MERGED from [com.android.support:appcompat-v7:23.4.0] C:\Users\azza ahmed\Desktop\Travelaholicc\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.4.0] C:\Users\azza ahmed\Desktop\Travelaholicc\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
 MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\azza ahmed\Desktop\Travelaholicc\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
@@ -76,19 +76,17 @@ MERGED from [com.android.support:support-v4:23.4.0] C:\Users\azza ahmed\Desktop\
 MERGED from [com.android.support:support-v4:23.4.0] C:\Users\azza ahmed\Desktop\Travelaholicc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\AndroidManifest.xml:22:5-20
 MERGED from [com.weiwangcn.betterspinner:library-material:1.1.0] C:\Users\azza ahmed\Desktop\Travelaholicc\app\build\intermediates\exploded-aar\com.weiwangcn.betterspinner\library-material\1.1.0\AndroidManifest.xml:11:5-14:19
 	android:label
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:13:9-41
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:12:9-41
 	android:supportsRtl
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:14:9-35
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:13:9-35
 	android:allowBackup
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:11:9-35
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:10:9-35
 	android:icon
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:12:9-43
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:11:9-43
 	android:theme
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:15:9-40
-	android:name
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:10:9-38
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:14:9-40
 meta-data#com.google.android.gms.version
-ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:16:9-18:69
+ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:15:9-17:69
 MERGED from [com.google.android.gms:play-services-basement:9.2.1] C:\Users\azza ahmed\Desktop\Travelaholicc\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.2.1\AndroidManifest.xml:21:9-23:69
 MERGED from [com.google.android.gms:play-services-basement:9.2.1] C:\Users\azza ahmed\Desktop\Travelaholicc\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.2.1\AndroidManifest.xml:21:9-23:69
 MERGED from [com.google.android.gms:play-services-basement:9.2.1] C:\Users\azza ahmed\Desktop\Travelaholicc\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.2.1\AndroidManifest.xml:21:9-23:69
@@ -99,53 +97,53 @@ MERGED from [com.google.android.gms:play-services-basement:9.2.1] C:\Users\azza 
 MERGED from [com.google.android.gms:play-services-basement:9.2.1] C:\Users\azza ahmed\Desktop\Travelaholicc\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.2.1\AndroidManifest.xml:21:9-23:69
 MERGED from [com.google.android.gms:play-services-basement:9.2.1] C:\Users\azza ahmed\Desktop\Travelaholicc\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\9.2.1\AndroidManifest.xml:21:9-23:69
 	android:value
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:18:13-66
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:17:13-66
 	android:name
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:17:13-58
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:16:13-58
 activity#com.example.azzaahmed.travelaholicc.MainActivity
-ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:20:9-29:20
+ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:19:9-28:20
 	android:label
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:22:13-45
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:21:13-45
 	android:theme
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:23:13-56
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:22:13-56
 	android:name
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:21:13-41
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:20:13-41
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:24:13-28:29
+ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:23:13-27:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:25:17-69
+ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:24:17-69
 	android:name
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:25:25-66
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:24:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:27:17-77
+ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:26:17-77
 	android:name
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:27:27-74
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:26:27-74
 activity#com.example.azzaahmed.travelaholicc.HomeActivity
-ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:30:9-34:59
+ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:29:9-33:59
 	android:label
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:32:13-56
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:31:13-56
 	android:parentActivityName
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:33:13-55
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:32:13-55
 	android:theme
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:34:13-56
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:33:13-56
 	android:name
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:31:13-41
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:30:13-41
 meta-data#android.support.PARENT_ACTIVITY
-ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:36:9-38:80
+ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:35:9-37:80
 	android:value
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:38:13-77
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:37:13-77
 	android:name
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:37:13-59
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:36:13-59
 activity#com.example.azzaahmed.travelaholicc.ResultsActivity
-ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:40:9-48:20
+ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:39:9-47:20
 	android:label
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:42:13-59
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:41:13-59
 	android:parentActivityName
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:43:13-55
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:42:13-55
 	android:theme
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:44:13-56
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:43:13-56
 	android:name
-		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:41:13-44
+		ADDED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml:40:13-44
 uses-sdk
 INJECTED from C:\Users\azza ahmed\Desktop\Travelaholicc\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:multidex:1.0.1] C:\Users\azza ahmed\Desktop\Travelaholicc\app\build\intermediates\exploded-aar\com.android.support\multidex\1.0.1\AndroidManifest.xml:18:5-42

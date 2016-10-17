@@ -80,4 +80,12 @@ public class HotelFlight implements Serializable
             //return FlightPrice;
             return hotel.getImage_path();
         }
+        public String getStarRate() {
+            return hotel.getRate()+"";
+
+        }
+        public String getRating() {
+            return hotel.getRating();
+
+        }
     }

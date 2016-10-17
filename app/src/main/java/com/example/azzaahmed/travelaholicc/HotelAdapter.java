@@ -35,14 +35,18 @@ public class HotelAdapter extends ArrayAdapter<Hotel>
             convertView.findViewById(R.id.flightResultLayout).setVisibility(View.GONE);
             String HotelName = getItem(position).getName();
             String HotelPrice=Double.toString(getItem(position).getPrice());
-
+            String StarRate=getItem(position).getRate();
+            String Rating_all=getItem(position).getRating()+" /10";
             TextView price = (TextView) convertView.findViewById(R.id.HotelPrice);
             TextView Name = (TextView) convertView.findViewById(R.id.HotelName);
-
+            TextView starRate = (TextView) convertView.findViewById(R.id.StarRate);
+            TextView Rating = (TextView) convertView.findViewById(R.id.Rating);
             //ImageView image = (ImageView) customView.findViewById(R.id.ssImage);
 
             price.setText(HotelPrice);
             Name.setText(HotelName);
+            starRate.setText(StarRate);
+            Rating.setText(Rating_all);
             //image.setImageResource(R.drawable.chunky);
 
         Picasso.with(context)

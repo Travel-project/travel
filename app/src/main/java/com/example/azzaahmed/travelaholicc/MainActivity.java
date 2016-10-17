@@ -131,19 +131,7 @@ private Bundle extras;
 
         }
     }
-//    @Override
-//    public void onConnected(Bundle connectionHint) {
-//        // Reaching onConnected means we consider the user signed in.
-//        Log.d(TAG, "onConnected");
-//
-//
-//    }
 
-
-//    @Override
-//    public void onConnectionSuspended(int i) {
-//        mGoogleApiClient.connect();
-//    }
 
     // [START onActivityResult]
     @Override

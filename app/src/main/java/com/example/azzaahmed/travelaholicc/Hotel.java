@@ -8,17 +8,6 @@ import java.io.Serializable;
 public class Hotel implements Serializable, Comparable <Hotel>
 {
    private String country;
-
-    public String getCity() {
-        return city;
-    }
-
-
-
-    public String getCountry() {
-        return country;
-    }
-
     private String city;
     String startdate;
     String enddate;
@@ -27,42 +16,27 @@ public class Hotel implements Serializable, Comparable <Hotel>
    private String currency;
    private Double price;
     String regional;
-
-
-
     private String image_path;
 
-    public double getRate() {
-        return rate;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    private double rate;
+    private String rate;
     int adult;
     int child;
     private String name;
+    private  String rating;
 
-    public String getName() {
-        return name;
-    }
-    public String getImage_path() {
-        return image_path;
-    }
-    public Double getPrice() {
-        return price;
+
+    public String getCountry() {
+        return country;
     }
 
-    Hotel(String name,String city,String currency,Double price,String image_path,String country,double rate){
+    Hotel(String name,String city,String currency,Double price,String image_path,String country,String rate,String rating){
         this.city=city;
         this.currency=currency;
         this.price=price;
         this.image_path=image_path;
         this.rate=rate;
         this.country=country;
-
+        this.rating=rating;
         this.name=name;
     }
 
@@ -74,8 +48,29 @@ public class Hotel implements Serializable, Comparable <Hotel>
         else return -1;
     }
 
-//    public void setRest(String startdate,String enddate){
-//
-//    }
+    public String getName() {
+        return name;
+    }
+    public String getImage_path() {
+        return image_path;
+    }
+    public Double getPrice() {
+        return price;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+    public String getRate() {
+        return rate;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+    public String getCity() {
+        return city;
+    }
+
 
 }

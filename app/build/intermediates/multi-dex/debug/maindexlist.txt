@@ -257,7 +257,6 @@ android/support/v4/media/VolumeProviderCompatApi21.class
 android/support/v4/util/ArrayMap.class
 com/google/firebase/FirebaseException.class
 android/support/annotation/ColorInt.class
-com/example/azzaahmed/travelaholicc/MyApplication.class
 android/support/v7/widget/RecyclerView$RecyclerListener.class
 com/google/android/gms/plus/Account.class
 android/support/v7/app/AppCompatCallback.class
