@@ -15,17 +15,23 @@
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         android:id="@+id/flightResultLayout">
-
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="35dp"
+            android:src="@drawable/plane"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="6dp"
+            android:scaleType="fitXY"/>
         <TextView
         android:id="@+id/FlightName"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
         android:text="flight_name"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="15dp"
         android:layout_marginRight="20dp"
             android:textColor="@color/colorPrimary"
             android:textAppearance="?android:textAppearanceMedium"
@@ -34,13 +40,13 @@
             android:layout_marginTop="6dp"/>
         <TextView
         android:id="@+id/FlightPrice"
-            android:layout_weight="0"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
         android:text="flight_price"
             android:textAppearance="?android:textAppearanceMedium"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="6dp"/>
         </LinearLayout>
@@ -48,9 +54,9 @@
 
 
     <LinearLayout
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         android:id="@+id/hotelResultLayout">
 
@@ -60,8 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/hotel2"
-        android:layout_marginTop="3dp"
-        android:scaleType="centerCrop"/>
+        android:scaleType="fitXY"/>
      <LinearLayout
             android:layout_weight="1"
             android:layout_width="match_parent"
@@ -101,7 +106,7 @@
                  android:layout_height="25dp"
                  android:src="@drawable/star1"
                  android:layout_marginLeft="3dp"
-                 android:scaleType="centerInside"/>
+                 android:scaleType="centerCrop"/>
              </LinearLayout>
          <TextView
              android:id="@+id/Rating"

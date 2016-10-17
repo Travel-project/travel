@@ -5,11 +5,12 @@ import java.io.Serializable;
 /**
  * Created by azza ahmed on 10/12/2016.
  */
-public class HotelFlight implements Serializable
+public class HotelFlight implements Serializable , Comparable <HotelFlight>
 
     {
         private Flight flight;
         private Hotel hotel;
+        private double totalPrice;
 //        private int Hotel_id;
 //        private String image_path;
 //        private String Name;
@@ -33,6 +34,7 @@ public class HotelFlight implements Serializable
         HotelFlight(Flight flight,Hotel hotel){
             this.flight=flight;
             this.hotel=hotel;
+            totalPrice= flight.getPrice()+hotel.getPrice();
         }
 
 //        public int getHotel_id() {
@@ -87,5 +89,12 @@ public class HotelFlight implements Serializable
         public String getRating() {
             return hotel.getRating();
 
+        }
+        @Override
+        public int compareTo(HotelFlight another) {
+
+            if(totalPrice==another.totalPrice) return 0;
+            else if(totalPrice<another.totalPrice) return 1;
+            else return -1;
         }
     }

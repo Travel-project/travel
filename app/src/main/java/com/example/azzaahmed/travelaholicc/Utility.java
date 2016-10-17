@@ -16,8 +16,8 @@ public class Utility {
         URL_TRAVELPAYOUTS_FLIGHT_REQ_CHEAP = URL_TRAVELPAYOUTS_FLIGHT_REQ_CHEAP+"origin="+origin+"&destination="+destination+"&depart_date="+depart_date+"&return_date="+return_date+"&currency="+currency+"&trip_class="+trip_class+"&page=1&limit=10&sorting=price&token="+TRAVELPAYOUTS_TOKEN_FLIGHT;
         return URL_TRAVELPAYOUTS_FLIGHT_REQ_CHEAP;
     }
-    public static String setUrlTiketHotelsReq(String country,String startdate,String enddate,int night,int rooms,int adult,int child) {
-        URL_TIKET_HOTELS_REQ = URL_TIKET_HOTELS_REQ+country+"&startdate="+startdate+"&night="+night+"&enddate="+enddate+"&room="+rooms+"&adult="+adult+"&child="+child+"&token="+TIKET_TOKEN_HOTELS+"&output=json";
+    public static String setUrlTiketHotelsReq(String country,String startdate,String enddate,int night,int rooms,int adult,int child,String currency) {
+        URL_TIKET_HOTELS_REQ = URL_TIKET_HOTELS_REQ+country+"&startdate="+startdate+"&night="+night+"&enddate="+enddate+"&room="+rooms+"&adult="+adult+"&child="+child+"&currency="+currency+"&token="+TIKET_TOKEN_HOTELS+"&output=json";
         return  URL_TIKET_HOTELS_REQ;
     }
 }

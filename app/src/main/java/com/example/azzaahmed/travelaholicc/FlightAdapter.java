@@ -29,7 +29,7 @@ public class FlightAdapter extends ArrayAdapter<Flight> {
         }
 View myView= LayoutInflater.from(context).inflate(R.layout.fragment_results, parent, false);
         String FlightName = getItem(position).getName();
-        String FlightPrice=Double.toString(getItem(position).getPrice());
+        String FlightPrice="$"+Double.toString(getItem(position).getPrice());
        TextView Flightprice = (TextView) convertView.findViewById(R.id.FlightPrice);
         TextView Flightname = (TextView) convertView.findViewById(R.id.FlightName);
         //ImageView image = (ImageView) customView.findViewById(R.id.ssImage);

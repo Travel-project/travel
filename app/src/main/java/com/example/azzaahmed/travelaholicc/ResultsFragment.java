@@ -69,7 +69,7 @@ boolean FetchHotelFlag=false;
 
 
          checkFetchWhatArray[0]=true;
-        checkFetchWhatArray[1]=true;
+        checkFetchWhatArray[1]=false;
   //      checkFetchWhatArray= getArguments().getBooleanArray("checkFetchWhat");
 if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
         requestFlight();
@@ -77,7 +77,7 @@ if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
         requestHotel();
         else {requestFlight();
     requestHotel();}
-         budget = 5000000;
+         budget =440;
 //        requestFlight();
 // requestHotel();
 
@@ -133,7 +133,7 @@ if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
 
     public void continueRequestRoom()
     {
-        String url = Utility.setUrlTiketHotelsReq("Indonesia", "2012-11-11", "2012-11-12", 1, 2, 2, 0); // *** these data will be obtained from the search ***
+        String url = Utility.setUrlTiketHotelsReq("Indonesia", "2012-11-11", "2012-11-12", 1, 2, 2, 0,"usd"); // *** these data will be obtained from the search ***
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -292,6 +292,7 @@ private void ViewUpdate( ){
         }
     progress.dismiss();
 
+    Collections.sort(HotelFlightList);
         ListAdapter HotelAdapter = new ResultsAdapter(getContext(), HotelFlightList);
         ListView HotelsListView = (ListView) rootView.findViewById(R.id.listview_results);
         HotelsListView.setAdapter(HotelAdapter);

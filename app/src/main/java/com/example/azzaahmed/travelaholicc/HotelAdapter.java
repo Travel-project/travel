@@ -34,7 +34,7 @@ public class HotelAdapter extends ArrayAdapter<Hotel>
             }
             convertView.findViewById(R.id.flightResultLayout).setVisibility(View.GONE);
             String HotelName = getItem(position).getName();
-            String HotelPrice=Double.toString(getItem(position).getPrice());
+            String HotelPrice="$"+Double.toString(getItem(position).getPrice());
             String StarRate=getItem(position).getRate();
             String Rating_all=getItem(position).getRating()+" /10";
             TextView price = (TextView) convertView.findViewById(R.id.HotelPrice);

@@ -31,10 +31,10 @@ public class ResultsAdapter extends ArrayAdapter<HotelFlight> {
             convertView = LayoutInflater.from(context).inflate(R.layout.result_list, parent, false);
         }
         String HotelName = getItem(position).getName();
-        String HotelPrice=Double.toString(getItem(position).getHotelPrice());
+        String HotelPrice="$"+Double.toString(getItem(position).getHotelPrice());
 
         String FlightName = getItem(position).getFlightName();
-        String FlightPrice=Double.toString(getItem(position).getFlightPrice());
+        String FlightPrice="$"+Double.toString(getItem(position).getFlightPrice());
         String StarRate=getItem(position).getStarRate();
         String Rating_all=getItem(position).getRating()+" /10";
 

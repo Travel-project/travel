@@ -3014,9 +3014,10 @@ containing a value of this type.
         public static final int mdtp_material_button_selected=0x7f02017d;
         public static final int met_ic_clear=0x7f02017e;
         public static final int met_ic_close=0x7f02017f;
-        public static final int notification_template_icon_bg=0x7f020182;
-        public static final int shadow_18=0x7f020180;
-        public static final int star1=0x7f020181;
+        public static final int notification_template_icon_bg=0x7f020183;
+        public static final int plane=0x7f020180;
+        public static final int shadow_18=0x7f020181;
+        public static final int star1=0x7f020182;
     }
     public static final class id {
         public static final int FlightName=0x7f0c008b;
