@@ -272,7 +272,7 @@ public final class R {
 	}
 	public static final class layout {
 		public static final int country_picker = 0x7f04001f;
-		public static final int row = 0x7f040042;
+		public static final int row = 0x7f040041;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f060043;

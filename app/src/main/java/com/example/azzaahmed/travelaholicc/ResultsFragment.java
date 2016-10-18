@@ -67,9 +67,8 @@ boolean FetchHotelFlag=false;
 
         requestQueue = Volley.newRequestQueue(getActivity());
 
-
          checkFetchWhatArray[0]=true;
-        checkFetchWhatArray[1]=false;
+        checkFetchWhatArray[1]=true;
   //      checkFetchWhatArray= getArguments().getBooleanArray("checkFetchWhat");
 if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
         requestFlight();
@@ -142,6 +141,8 @@ if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
                     JSONArray result = results.getJSONArray("result");
                     Hotel hotel;
                     //JSONArray result = JSONObject.get("result");
+
+
                     for(int i=0 ; i<result.length();i++){
                         hotel=createHotel(result,i);
                         hotelArrayList.add(hotel);
@@ -314,7 +315,7 @@ private void ViewUpdate( ){
         Collections.sort(hotelArrayList);
 
         Log.d("array check fetch", "in create" + hotelArrayList.size());
-
+        progress.dismiss();
         ListAdapter HotelAdapter = new HotelAdapter(getContext(),hotelArrayList);
         ListView HotelsListView = (ListView) rootView.findViewById(R.id.listview_results);
         HotelsListView.setAdapter(HotelAdapter);
@@ -335,7 +336,7 @@ private void ViewUpdate( ){
     private void ViewFlights(){
 
         Collections.sort(flightArrayList);
-
+        progress.dismiss();
         Log.d("array check fetch", "in create" + flightArrayList.size());
 
 

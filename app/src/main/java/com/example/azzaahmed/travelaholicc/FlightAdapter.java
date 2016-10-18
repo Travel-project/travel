@@ -4,7 +4,9 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -25,9 +27,14 @@ public class FlightAdapter extends ArrayAdapter<Flight> {
 
         //  View customView = LayoutInflater.from(context).inflate(R.layout.result_list, parent, false);
         if (null == convertView) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.flight_result_list, parent, false);
+          //  convertView = LayoutInflater.from(context).inflate(R.layout.flight_result_list, parent, false);
+           convertView = LayoutInflater.from(context).inflate(R.layout.result_list, parent, false);
         }
-View myView= LayoutInflater.from(context).inflate(R.layout.fragment_results, parent, false);
+        convertView.findViewById(R.id.hotelResultLayout).setVisibility(View.GONE);
+
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,250
+        );
+        convertView.findViewById(R.id.ResultLayout).setLayoutParams(lp);
         String FlightName = getItem(position).getName();
         String FlightPrice="$"+Double.toString(getItem(position).getPrice());
        TextView Flightprice = (TextView) convertView.findViewById(R.id.FlightPrice);
