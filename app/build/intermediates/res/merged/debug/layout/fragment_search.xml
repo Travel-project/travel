@@ -283,6 +283,7 @@
                 android:layout_marginTop="32dp"
                 android:text="SEARCH"
                 android:textSize="14sp"
+                android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:theme="@style/MyButton"/>
         </LinearLayout>
