@@ -98,10 +98,10 @@ public final class R {
 		public static final int mdtp_year_label_text_size = 0x7f080039;
 	}
 	public static final class drawable {
-		public static final int mdtp_done_background_color = 0x7f02017c;
-		public static final int mdtp_done_background_color_dark = 0x7f02017d;
-		public static final int mdtp_material_button_background = 0x7f02017e;
-		public static final int mdtp_material_button_selected = 0x7f02017f;
+		public static final int mdtp_done_background_color = 0x7f02017d;
+		public static final int mdtp_done_background_color_dark = 0x7f02017e;
+		public static final int mdtp_material_button_background = 0x7f02017f;
+		public static final int mdtp_material_button_selected = 0x7f020180;
 	}
 	public static final class id {
 		public static final int ampm_hitspace = 0x7f0c00b2;

@@ -3011,16 +3011,17 @@ containing a value of this type.
         public static final int ic_tab_search=0x7f020179;
         public static final int logo=0x7f02017a;
         public static final int logo1=0x7f02017b;
-        public static final int mdtp_done_background_color=0x7f02017c;
-        public static final int mdtp_done_background_color_dark=0x7f02017d;
-        public static final int mdtp_material_button_background=0x7f02017e;
-        public static final int mdtp_material_button_selected=0x7f02017f;
-        public static final int met_ic_clear=0x7f020180;
-        public static final int met_ic_close=0x7f020181;
-        public static final int notification_template_icon_bg=0x7f020185;
-        public static final int plane=0x7f020182;
-        public static final int shadow_18=0x7f020183;
-        public static final int star1=0x7f020184;
+        public static final int logo2=0x7f02017c;
+        public static final int mdtp_done_background_color=0x7f02017d;
+        public static final int mdtp_done_background_color_dark=0x7f02017e;
+        public static final int mdtp_material_button_background=0x7f02017f;
+        public static final int mdtp_material_button_selected=0x7f020180;
+        public static final int met_ic_clear=0x7f020181;
+        public static final int met_ic_close=0x7f020182;
+        public static final int notification_template_icon_bg=0x7f020186;
+        public static final int plane=0x7f020183;
+        public static final int shadow_18=0x7f020184;
+        public static final int star1=0x7f020185;
     }
     public static final class id {
         public static final int FlightName=0x7f0c00c8;

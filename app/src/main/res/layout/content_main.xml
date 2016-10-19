@@ -11,9 +11,10 @@
         tools:context=".MainActivity">
 
     <ImageView
+        android:layout_marginTop="3dp"
         android:layout_width="400dp"
         android:layout_height="400dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/logo2"
         android:layout_gravity="center"
         android:scaleType="center"/>
 

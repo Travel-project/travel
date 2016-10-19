@@ -228,6 +228,10 @@
         "source": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\exploded-aar\\com.mukesh\\countrypicker\\1.1.5\\res\\drawable\\flag_ky.png"
     },
     {
+        "merged": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\logo2.png",
+        "source": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\src\\main\\res\\drawable\\logo2.png"
+    },
+    {
         "merged": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_sc.png",
         "source": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\exploded-aar\\com.mukesh\\countrypicker\\1.1.5\\res\\drawable\\flag_sc.png"
     },
