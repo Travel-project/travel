@@ -2,6 +2,7 @@ package com.example.azzaahmed.travelaholicc;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -33,7 +34,9 @@ import java.util.Collections;
  */
 public class ResultsFragment extends Fragment {
 
-//    private ArrayAdapter<String> ResultAdapter;
+    private static final String TAG = "ResultsActivity";
+    SearchData searchData;
+    //    private ArrayAdapter<String> ResultAdapter;
 //    ListView listView;
 //    ArrayList<String> videoArray = new ArrayList<String>();
     ArrayList<Flight> flightArrayList = new ArrayList<>();
@@ -43,7 +46,7 @@ public class ResultsFragment extends Fragment {
     RequestQueue requestQueue;
 //    String TOKEN;
     Context context;
-boolean FetchHotelFlag=false;
+    boolean FetchHotelFlag=false;
     boolean FetchFlightFlag=false;
     boolean FetchedData=false;
     View rootView;
@@ -67,16 +70,27 @@ boolean FetchHotelFlag=false;
 
         requestQueue = Volley.newRequestQueue(getActivity());
 
-         checkFetchWhatArray[0]=true;
-        checkFetchWhatArray[1]=true;
-  //      checkFetchWhatArray= getArguments().getBooleanArray("checkFetchWhat");
-if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
-        requestFlight();
-        else if(!checkFetchWhatArray[0]&&checkFetchWhatArray[1])
-        requestHotel();
-        else {requestFlight();
-    requestHotel();}
-         budget =440;
+        Intent intent=getActivity().getIntent();
+        Bundle b=intent.getExtras();
+        searchData= (SearchData) b.get("search_data");
+
+        if(intent!=null && searchData!=null){
+
+            Log.d(TAG, "data reveiverd : "+ receivedDataFromIntent() );
+
+            checkFetchWhatArray[0]=searchData.flightsOnly;
+            checkFetchWhatArray[1]=searchData.hotelsOnly;
+      //      checkFetchWhatArray= getArguments().getBooleanArray("checkFetchWhat");
+            if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
+                requestFlight();
+            else if(!checkFetchWhatArray[0]&&checkFetchWhatArray[1])
+                requestHotel();
+            else {
+                requestFlight();
+                requestHotel();
+            }
+             budget =searchData.getBudget();
+        }
 //        requestFlight();
 // requestHotel();
 
@@ -132,7 +146,8 @@ if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
 
     public void continueRequestRoom()
     {
-        String url = Utility.setUrlTiketHotelsReq("Indonesia", "2012-11-11", "2012-11-12", 1, 2, 2, 0,"usd"); // *** these data will be obtained from the search ***
+//        String url = Utility.setUrlTiketHotelsReq("Indonesia", "2012-11-11", "2012-11-12", 1, 2, 2, 0,"usd"); // *** these data will be obtained from the search ***
+        String url = Utility.setUrlTiketHotelsReq(searchData.getCountryTo(),searchData.getDateFrom(),searchData.getDateTo(),searchData.getNights(),searchData.getRoomNumber(), searchData.getAdultNumber(), searchData.getChildrenNumber(),"usd"); // *** these data will be obtained from the search ***
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -141,8 +156,6 @@ if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
                     JSONArray result = results.getJSONArray("result");
                     Hotel hotel;
                     //JSONArray result = JSONObject.get("result");
-
-
                     for(int i=0 ; i<result.length();i++){
                         hotel=createHotel(result,i);
                         hotelArrayList.add(hotel);
@@ -167,6 +180,7 @@ if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
                 Toast.makeText(context,error.toString(),Toast.LENGTH_LONG).show();
             }
         });
+        ///////// toast btala3 null exception////////////////////////////////////////////
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
                 30000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
@@ -178,7 +192,14 @@ if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
     {
         // MOW : Moscow
         // KHT : Khost
-        String url = Utility.setUrlTravelpayoutsFlightReqCheap("MOW","HKT", "2012-11-11", "2012-11-12","USD",0); // *** these data will be obtained from the search ***
+        String url;
+       if ((searchData.bussiness&&searchData.first_class) || (searchData.bussiness&&searchData.economy) || (searchData.first_class&&searchData.economy))
+          url = Utility.setUrlTravelpayoutsFlightReqCheap_NoClassType(searchData.getCityFrom(), searchData.getCityTo(), searchData.getDateFrom(), searchData.getDateTo(), "USD"); // *** these data will be obtained from the search ***
+        else
+            url = Utility.setUrlTravelpayoutsFlightReqCheap(searchData.getCityFrom(),searchData.getCityTo(),searchData.getDateFrom(),searchData.getDateTo(),"USD",getTripClass()); // *** these data will be obtained from the search ***
+//http://api.travelpayouts.com/v1/prices/calendar?depart_date=2016-11&origin=MOW&destination=BCN&calendar_type=departure_date&currency=usd&token=52fcf0bf3f56f373ea453dc15c88b159
+     //   url = Utility.setUrlTravelpayoutsFlightReqCheap_Month(searchData.getCityFrom(),searchData.getCityTo(),searchData.getDateFrom(),searchData.getDateTo(),"USD"); // *** these data will be obtained from the search ***
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -218,7 +239,7 @@ if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(jsonObjectRequest);
     }
-
+//http://api.travelpayouts.com/v1/prices/calendar?depart_date=2016-11&origin=MOW&destination=BCN&calendar_type=departure_date&currency=usd&token=52fcf0bf3f56f373ea453dc15c88b159
     //http://api.travelpayouts.com/v1/prices/cheap?origin=MOW&destination=HKT&depart_date=2016-11-11&return_date=2016-12-11&currency=USD&token=52fcf0bf3f56f373ea453dc15c88b159
 
     private Flight createFlight(JSONArray data,int index) throws JSONException {
@@ -229,17 +250,25 @@ if(checkFetchWhatArray[0]&&!checkFetchWhatArray[1])
          String currency;
          double price;
          String trip_class;
-
+            String Airline;
+        String FlightNumber;
         origin = data.getJSONObject(index).getString("origin");
         destination = data.getJSONObject(index).getString("destination");
         depart_date = data.getJSONObject(index).getString("depart_date");
         return_date = data.getJSONObject(index).getString("return_date");
+//        depart_date = data.getJSONObject(index).getString("departure_at");
+//        return_date = data.getJSONObject(index).getString("return_at");
 //        currency = data.getJSONObject(index).getString("currency");
         currency = "USD";
         price = data.getJSONObject(index).getDouble("value");
-        trip_class = data.getJSONObject(index).getString("trip_class");
-
-        return new Flight(origin,destination,depart_date,return_date,currency,price,Integer.parseInt(trip_class));
+      //  price = data.getJSONObject(index).getDouble("price");
+       trip_class = data.getJSONObject(index).getString("trip_class");
+          //  trip_class="0";
+//            Airline= data.getJSONObject(index).getString("airline");
+//             FlightNumber=data.getJSONObject(index).getString("flight_number");
+//
+       // return new Flight(origin,destination,depart_date,return_date,currency,price,Integer.parseInt(trip_class),Airline,FlightNumber);
+        return new Flight(origin,destination,depart_date,return_date,currency,price,Integer.parseInt(trip_class),"","");
 
     }
 
@@ -311,12 +340,18 @@ private void ViewUpdate( ){
             }
 
     private void ViewHotels( ){
-
+        ArrayList<Hotel> hotelNewList = new ArrayList<>();
         Collections.sort(hotelArrayList);
 
         Log.d("array check fetch", "in create" + hotelArrayList.size());
         progress.dismiss();
-        ListAdapter HotelAdapter = new HotelAdapter(getContext(),hotelArrayList);
+        for(int i=0;i<hotelArrayList.size();i++){
+            if(hotelArrayList.get(i).getPrice()<=budget)
+                hotelNewList.add(hotelArrayList.get(i));
+            else i=hotelArrayList.size();
+        }
+       // ListAdapter HotelAdapter = new HotelAdapter(getContext(),hotelArrayList);
+        ListAdapter HotelAdapter = new HotelAdapter(getContext(),hotelNewList);
         ListView HotelsListView = (ListView) rootView.findViewById(R.id.listview_results);
         HotelsListView.setAdapter(HotelAdapter);
 
@@ -334,13 +369,18 @@ private void ViewUpdate( ){
 
 
     private void ViewFlights(){
-
+        ArrayList<Flight> flightNewList = new ArrayList<>();
         Collections.sort(flightArrayList);
         progress.dismiss();
         Log.d("array check fetch", "in create" + flightArrayList.size());
+                for(int i=0;i<flightArrayList.size();i++){
+                    if(flightArrayList.get(i).getPrice()<=budget)
+                    flightNewList.add(flightArrayList.get(i));
+                    else i=flightArrayList.size();
+                }
 
-
-        ListAdapter HotelAdapter = new FlightAdapter(getContext(),flightArrayList);
+     //   ListAdapter HotelAdapter = new FlightAdapter(getContext(),flightArrayList);
+        ListAdapter HotelAdapter = new FlightAdapter(getContext(),flightNewList);
         ListView HotelsListView = (ListView) rootView.findViewById(R.id.listview_results);
         HotelsListView.setAdapter(HotelAdapter);
 
@@ -356,6 +396,25 @@ private void ViewUpdate( ){
 
     }
 
+    private int getTripClass(){
+//    trip_class — the flight class:
+//    0 — The economy class (the default value);
+//    1 — The business class;
+//    2 — The first class.
+        if(searchData.bussiness)
+            return 1;
+        else if(searchData.economy)
+            return 0;
+        else if(searchData.first_class)
+            return 2;
+        else return 0;
+    }
+
+    private String receivedDataFromIntent(){
+        return searchData.getCountryFrom()+","+searchData.getCountryTo()+"\n"+searchData.getDateFrom()+","+searchData.getDateTo()+"\n"
+                +searchData.getCityFrom()+","+searchData.getCityTo()+"\n"+searchData.getBudget()+"\n"+searchData.flightsOnly+","+searchData.hotelsOnly+
+                "\n"+searchData.first_class+","+searchData.economy+","+searchData.bussiness;
+    }
         }
    // }}
 

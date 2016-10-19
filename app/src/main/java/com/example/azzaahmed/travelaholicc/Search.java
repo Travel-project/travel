@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -28,11 +29,22 @@ import java.util.Calendar;
 public class Search extends Fragment implements
         DatePickerDialog.OnDateSetListener{
 
+    SearchData searchData;
     //private TextView dateTextView;
     private EditText date_EditText_from;
     private EditText date_EditText_to;
     private EditText country_EditText_from;
     private EditText country_EditText_to;
+    private EditText city_EditText_from;
+    private EditText city_EditText_to;
+    private EditText budget;
+
+    private String date_from_value;
+    private String date_to_value;
+
+    private CheckBox economy;
+    private CheckBox business;
+    private CheckBox first_class;
 
     MaterialBetterSpinner materialBetterSpinner_adults ;
     MaterialBetterSpinner materialBetterSpinner_children ;
@@ -42,6 +54,7 @@ public class Search extends Fragment implements
     //private TextView mCountryNameTextView, mCountryIsoCodeTextView, mCountryDialCodeTextView;
     private ImageView mCountryFlagImageView_from;
     private ImageView mCountryFlagImageView_to;
+    View view;
     //private Button mPickCountryButton;
 
     private Button mSearch;
@@ -75,17 +88,28 @@ public class Search extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
+         view = inflater.inflate(R.layout.fragment_search, container, false);
         //dateTextView = (TextView)view.findViewById(R.id.date_textview);
         //Button dateButton = (Button)view.findViewById(R.id.date_button);
         date_EditText_from = (EditText)view.findViewById(R.id.pick_date_from);
         date_EditText_to = (EditText)view.findViewById(R.id.pick_date_to);
         country_EditText_from = (EditText)view.findViewById(R.id.pick_country_from);
         country_EditText_to = (EditText)view.findViewById(R.id.pick_country_to);
+        city_EditText_from = (EditText)view.findViewById(R.id.pick_city_from);
+        city_EditText_to = (EditText)view.findViewById(R.id.pick_city_to);
+        budget = (EditText)view.findViewById(R.id.budget);
+
+        economy = (CheckBox)view.findViewById(R.id.economy);
+        business = (CheckBox)view.findViewById(R.id.business);
+        first_class = (CheckBox)view.findViewById(R.id.first_class);
+
         RadioGroup search_options = (RadioGroup)view.findViewById(R.id.options_group);
 
         date_EditText_from.setText("From: "+Calendar.getInstance().get(Calendar.DAY_OF_MONTH)+"/"+Calendar.getInstance().get(Calendar.MONTH)+"/"+Calendar.getInstance().get(Calendar.YEAR));
         date_EditText_to.setText("To: "+Calendar.getInstance().get(Calendar.DAY_OF_MONTH)+"/"+Calendar.getInstance().get(Calendar.MONTH)+"/"+Calendar.getInstance().get(Calendar.YEAR));
+
+        date_from_value = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)+"-"+Calendar.getInstance().get(Calendar.MONTH)+"-"+Calendar.getInstance().get(Calendar.YEAR);
+        date_to_value=Calendar.getInstance().get(Calendar.DAY_OF_MONTH)+"-"+Calendar.getInstance().get(Calendar.MONTH)+"-"+Calendar.getInstance().get(Calendar.YEAR);
 
         mCountryFlagImageView_from = (ImageView) view.findViewById(R.id.row_icon_from);
         mCountryFlagImageView_to = (ImageView) view.findViewById(R.id.row_icon_to);
@@ -197,13 +221,23 @@ public class Search extends Fragment implements
         mSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                public SearchData(String countryFrom, String countryTo, String dateFrom, String dateTo, String cityFrom, String cityTo, int adultNumber, int childrenNumber, int classType, double starRate, int roomNumber, boolean flightsOnly, boolean hotelsOnly, boolean economy,boolean bussiness, boolean first_class,int nights) {
+
+                //materialBetterSpinner_adults
+                //materialBetterSpinner_children
+                // *String roomCapacity*, String starRate, String roomNumber
+
+                searchData = new SearchData(country_EditText_from.getText().toString(),country_EditText_to.getText().toString(),date_from_value,
+                        date_to_value, city_EditText_from.getText().toString(),city_EditText_to.getText().toString(),1,0,0,4.0,1,flight,hotel,
+                        economy.isChecked(),business.isChecked(),first_class.isChecked(),1,Double.parseDouble(budget.getText().toString()));
+
                 // start result activity here
-             // boolean checkFetchWhat[]={true,false};
                 Intent myIntent = new Intent(getActivity(), ResultsActivity.class);
-                        //.putExtra("checkFetchWhat",checkFetchWhat);
-               // myIntent.putExtra("key", value); //Optional parameters
-               // getActivity().
-                        startActivity(myIntent);
+                // myIntent.putExtra("key", value); //Optional parameters
+                Bundle b = new Bundle();
+                b.putSerializable("search_data", searchData);
+                myIntent.putExtras(b);
+                getActivity().startActivity(myIntent);
             }
         });
 
@@ -225,13 +259,15 @@ public class Search extends Fragment implements
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
         String date;
         if(date_from) {
-            date = "From: " + dayOfMonth + "/" + (++monthOfYear) + "/" + year;
+            date = "From: " +dayOfMonth  + "/" + (++monthOfYear) + "/" + year;
             //dateTextView.setText(date);
+            date_from_value =  dayOfMonth + "-" + (++monthOfYear) + "-" +year ;
             date_EditText_from.setText(date);
         }
         if(date_to){
             date = "To: " + dayOfMonth + "/" + (++monthOfYear) + "/" + year;
             //dateTextView.setText(date);
+            date_to_value = dayOfMonth + "-" + (++monthOfYear) + "-" +year ;
             date_EditText_to.setText(date);
         }
     }
@@ -288,13 +324,18 @@ public class Search extends Fragment implements
             final View showView = mFlight;
             final View hideView = mHotels;
             continueShowView(showView,hideView);
+            view.findViewById(R.id.country_layout).setVisibility(View.GONE);
+            view.findViewById(R.id.city_layout).setVisibility(View.VISIBLE);
 
         }else if(hotel && !flight){
             final View showView = mHotels;
             final View hideView = mFlight;
             continueShowView(showView,hideView);
+            view.findViewById(R.id.city_layout).setVisibility(View.GONE);
+            view.findViewById(R.id.country_layout).setVisibility(View.VISIBLE);
         }else{
-
+            view.findViewById(R.id.city_layout).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.country_layout).setVisibility(View.VISIBLE);
             final View showView1 = mFlight;
 
             showView1.setAlpha(0f);

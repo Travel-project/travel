@@ -140,12 +140,12 @@
         "source": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\exploded-aar\\com.mukesh\\countrypicker\\1.1.5\\res\\drawable\\flag_ae.png"
     },
     {
-        "merged": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_kw.png",
-        "source": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\exploded-aar\\com.mukesh\\countrypicker\\1.1.5\\res\\drawable\\flag_kw.png"
-    },
-    {
         "merged": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\mdtp_done_background_color_dark.xml",
         "source": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\exploded-aar\\com.wdullaer\\materialdatetimepicker\\2.5.0\\res\\drawable\\mdtp_done_background_color_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_kw.png",
+        "source": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\exploded-aar\\com.mukesh\\countrypicker\\1.1.5\\res\\drawable\\flag_kw.png"
     },
     {
         "merged": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_bi.png",
@@ -684,6 +684,10 @@
         "source": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable\\abc_spinner_textfield_background_material.xml"
     },
     {
+        "merged": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\logo1.png",
+        "source": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\src\\main\\res\\drawable\\logo1.png"
+    },
+    {
         "merged": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\flag_il.png",
         "source": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\exploded-aar\\com.mukesh\\countrypicker\\1.1.5\\res\\drawable\\flag_il.png"
     },
@@ -1106,6 +1110,10 @@
     {
         "merged": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_colored_material.xml",
         "source": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\logo.png",
+        "source": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\src\\main\\res\\drawable\\logo.png"
     },
     {
         "merged": "C:\\Users\\azza ahmed\\Desktop\\Travelaholicc\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\hotel2.jpg",

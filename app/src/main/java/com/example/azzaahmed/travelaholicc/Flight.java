@@ -22,11 +22,12 @@ public class Flight  implements Serializable, Comparable <Flight>
     private String image_path;
     private int trip_class;
 
-//    trip_class — the flight class:
+
+    //    trip_class — the flight class:
 //    0 — The economy class (the default value);
 //    1 — The business class;
 //    2 — The first class.
-    Flight(String origin, String destination, String depart_date, String return_date, String currency, Double price, int trip_class){
+    Flight(String origin, String destination, String depart_date, String return_date, String currency, Double price, int trip_class,String airline,String flight_number ){
         this.origin=origin;
         this.destination=destination;
         this.depart_date=depart_date;
@@ -34,6 +35,8 @@ public class Flight  implements Serializable, Comparable <Flight>
         this.currency=currency;
         this.price=price;
         this.trip_class=trip_class;
+        this.airline=airline;
+        this.flight_number=flight_number;
     }
 
     public double getPrice() {
@@ -41,7 +44,7 @@ public class Flight  implements Serializable, Comparable <Flight>
     }
     public String getName() {
 
-        return origin+"  "+destination;
+        return airline+ "  "+ flight_number+ origin + "  "+ destination;
     }
 
     public String getOrigin() {
@@ -79,6 +82,7 @@ public class Flight  implements Serializable, Comparable <Flight>
     public int getTrip_class() {
         return trip_class;
     }
+
 
     @Override
     public int compareTo(Flight another) {

@@ -21,7 +21,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,7 +53,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:id="@+id/country_layout">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -113,7 +113,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:id="@+id/city_layout">
 
                 <EditText
                     android:id="@+id/pick_city_from"
@@ -221,18 +222,21 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
                         <CheckBox
+                            android:id="@+id/economy"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="true"
                             android:text="Economy"
                             android:theme="@style/MyCheckBox"/>
                         <CheckBox
+                            android:id="@+id/business"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="false"
                             android:text="Business"
                             android:theme="@style/MyCheckBox"/>
                         <CheckBox
+                            android:id="@+id/first_class"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="false"

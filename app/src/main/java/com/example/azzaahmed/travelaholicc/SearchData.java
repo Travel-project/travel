@@ -1,24 +1,35 @@
 package com.example.azzaahmed.travelaholicc;
 
+import java.io.Serializable;
+
 /**
  * Created by azza ahmed on 10/16/2016.
  */
-public class SearchData {
+public class SearchData implements Serializable {
     private String countryFrom;
     private String countryTo;
     private String dateFrom;
     private String dateTo;
     private String cityFrom;
     private String cityTo;
-    private String adultNumber;
-    private String childrenNumber;
-    private String classType;
 
-   private String roomCapacity;
-    private String starRate;
-    private String roomNumber;
+    private int adultNumber;
+    private int childrenNumber;
+//    private int classType;
 
-    public SearchData(String countryFrom, String countryTo, String dateFrom, String dateTo, String cityFrom, String cityTo, String adultNumber, String childrenNumber, String classType, String roomCapacity, String starRate, String roomNumber) {
+    private String roomCapacity;
+    private double starRate;
+    private double budget;
+    private int roomNumber;
+    private int nights;
+
+    boolean bussiness;
+    boolean first_class;
+    boolean economy;
+    boolean flightsOnly;
+    boolean hotelsOnly;
+
+    public SearchData(String countryFrom, String countryTo, String dateFrom, String dateTo, String cityFrom, String cityTo, int adultNumber, int childrenNumber, int classType, double starRate, int roomNumber, boolean flightsOnly, boolean hotelsOnly, boolean economy,boolean bussiness, boolean first_class,int nights, double budget) {
         this.countryFrom = countryFrom;
         this.countryTo = countryTo;
         this.dateFrom = dateFrom;
@@ -27,10 +38,20 @@ public class SearchData {
         this.cityTo = cityTo;
         this.adultNumber = adultNumber;
         this.childrenNumber = childrenNumber;
-        this.classType = classType;
-        this.roomCapacity = roomCapacity;
+//        this.classType = classType;
+        //this.roomCapacity = roomCapacity;
         this.starRate = starRate;
         this.roomNumber = roomNumber;
+        this.flightsOnly=flightsOnly;
+        this.hotelsOnly=hotelsOnly;
+
+        this.bussiness=bussiness;
+        this.first_class=first_class;
+        this.economy=economy;
+
+        this.nights=nights;
+
+        this.budget = budget;
     }
 
     public String getCountryFrom() {
@@ -57,27 +78,31 @@ public class SearchData {
         return cityTo;
     }
 
-    public String getAdultNumber() {
+    public int getAdultNumber() {
         return adultNumber;
     }
 
-    public String getChildrenNumber() {
+    public int getChildrenNumber() {
         return childrenNumber;
     }
 
-    public String getClassType() {
-        return classType;
-    }
+//    public int getClassType() {
+//        return classType;
+//    }
 
     public String getRoomCapacity() {
         return roomCapacity;
     }
 
-    public String getStarRate() {
+    public double getStarRate() {
         return starRate;
     }
 
-    public String getRoomNumber() {
+    public int getRoomNumber() {
         return roomNumber;
     }
+
+    public int getNights() { return nights; }
+
+    public double getBudget() { return budget; }
 }
