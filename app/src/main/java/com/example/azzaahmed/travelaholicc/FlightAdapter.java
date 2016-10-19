@@ -16,10 +16,11 @@ import java.util.ArrayList;
  */
 public class FlightAdapter extends ArrayAdapter<Flight> {
     private Context context;
-
+  int size;
     FlightAdapter(Context context,  ArrayList Flights ) {
         super(context, R.layout.result_list ,Flights);
         this.context=context;
+        if(Flights.size()==0) size=0;
     }
 
     @Override
@@ -30,6 +31,7 @@ public class FlightAdapter extends ArrayAdapter<Flight> {
           //  convertView = LayoutInflater.from(context).inflate(R.layout.flight_result_list, parent, false);
            convertView = LayoutInflater.from(context).inflate(R.layout.result_list, parent, false);
         }
+
         convertView.findViewById(R.id.hotelResultLayout).setVisibility(View.GONE);
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,250
@@ -42,8 +44,12 @@ public class FlightAdapter extends ArrayAdapter<Flight> {
         //ImageView image = (ImageView) customView.findViewById(R.id.ssImage);
         Flightname.setText(FlightName);
         Flightprice.setText(FlightPrice);
-
-
+//        TextView notFound =(TextView) convertView.findViewById(R.id.notFound);
+//        notFound.setVisibility(View.GONE);
+//            if(size==0){
+//
+//                notFound.setVisibility(View.VISIBLE);
+//            }
         //image.setImageResource(R.drawable.chunky);
 
 //        Picasso.with(context)

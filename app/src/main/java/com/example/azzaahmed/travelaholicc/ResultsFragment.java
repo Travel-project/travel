@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -44,7 +45,7 @@ public class ResultsFragment extends Fragment {
     ArrayList<HotelFlight> HotelFlightList=new ArrayList<>();
   //  ArrayAdapter<String> videoAdapter;
     RequestQueue requestQueue;
-//    String TOKEN;
+  TextView notFound;
     Context context;
     boolean FetchHotelFlag=false;
     boolean FetchFlightFlag=false;
@@ -62,6 +63,7 @@ public class ResultsFragment extends Fragment {
                              Bundle savedInstanceState) {
         //View rootView =inflater.inflate(R.layout.fragment_results, container, false);
         rootView = inflater.inflate(R.layout.fragment_results, container, false);
+   notFound= (TextView) rootView.findViewById(R.id.notFound);
          progress = new ProgressDialog(getActivity());
         progress.setTitle("Loading");
         progress.setMessage("Wait while loading...");
@@ -135,6 +137,7 @@ public class ResultsFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getContext(), error.toString(), Toast.LENGTH_LONG).show();
+                progress.dismiss();
             }
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
@@ -178,6 +181,7 @@ public class ResultsFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(context,error.toString(),Toast.LENGTH_LONG).show();
+                progress.dismiss();
             }
         });
         ///////// toast btala3 null exception////////////////////////////////////////////
@@ -231,6 +235,8 @@ public class ResultsFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(context,error.toString(),Toast.LENGTH_LONG).show();
+                progress.dismiss();
+                //////toastyyyy//////
             }
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
@@ -323,9 +329,12 @@ private void ViewUpdate( ){
     progress.dismiss();
 
     Collections.sort(HotelFlightList);
+    if(HotelFlightList.size()==0) notFound.setText("no data found");
+    else {
         ListAdapter HotelAdapter = new ResultsAdapter(getContext(), HotelFlightList);
         ListView HotelsListView = (ListView) rootView.findViewById(R.id.listview_results);
         HotelsListView.setAdapter(HotelAdapter);
+
 
         HotelsListView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
@@ -338,64 +347,71 @@ private void ViewUpdate( ){
         );
 
             }
+}
 
-    private void ViewHotels( ){
+    private void ViewHotels( ) {
         ArrayList<Hotel> hotelNewList = new ArrayList<>();
         Collections.sort(hotelArrayList);
 
         Log.d("array check fetch", "in create" + hotelArrayList.size());
-        progress.dismiss();
-        for(int i=0;i<hotelArrayList.size();i++){
-            if(hotelArrayList.get(i).getPrice()<=budget)
-                hotelNewList.add(hotelArrayList.get(i));
-            else i=hotelArrayList.size();
-        }
-       // ListAdapter HotelAdapter = new HotelAdapter(getContext(),hotelArrayList);
-        ListAdapter HotelAdapter = new HotelAdapter(getContext(),hotelNewList);
-        ListView HotelsListView = (ListView) rootView.findViewById(R.id.listview_results);
-        HotelsListView.setAdapter(HotelAdapter);
 
-        HotelsListView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String food = String.valueOf(parent.getItemAtPosition(position));
-                        //Toast.makeText(MainActivity.this, food, Toast.LENGTH_LONG).show();
+        progress.dismiss();
+        for (int i = 0; i < hotelArrayList.size(); i++) {
+            if (hotelArrayList.get(i).getPrice() <= budget)
+                hotelNewList.add(hotelArrayList.get(i));
+            else i = hotelArrayList.size();
+        }
+
+        if (hotelArrayList.size() == 0) notFound.setText("no data found");
+            // ListAdapter HotelAdapter = new HotelAdapter(getContext(),hotelArrayList);
+        else {
+            ListAdapter HotelAdapter = new HotelAdapter(getContext(), hotelNewList);
+            ListView HotelsListView = (ListView) rootView.findViewById(R.id.listview_results);
+            HotelsListView.setAdapter(HotelAdapter);
+
+            HotelsListView.setOnItemClickListener(
+                    new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            String food = String.valueOf(parent.getItemAtPosition(position));
+                            //Toast.makeText(MainActivity.this, food, Toast.LENGTH_LONG).show();
+                        }
                     }
-                }
-        );
+            );
+
+        }
 
     }
-
-
-    private void ViewFlights(){
+    private void ViewFlights() {
         ArrayList<Flight> flightNewList = new ArrayList<>();
         Collections.sort(flightArrayList);
         progress.dismiss();
         Log.d("array check fetch", "in create" + flightArrayList.size());
-                for(int i=0;i<flightArrayList.size();i++){
-                    if(flightArrayList.get(i).getPrice()<=budget)
-                    flightNewList.add(flightArrayList.get(i));
-                    else i=flightArrayList.size();
-                }
 
-     //   ListAdapter HotelAdapter = new FlightAdapter(getContext(),flightArrayList);
-        ListAdapter HotelAdapter = new FlightAdapter(getContext(),flightNewList);
-        ListView HotelsListView = (ListView) rootView.findViewById(R.id.listview_results);
-        HotelsListView.setAdapter(HotelAdapter);
+        for (int i = 0; i < flightArrayList.size(); i++) {
+            if (flightArrayList.get(i).getPrice() <= budget)
+                flightNewList.add(flightArrayList.get(i));
+            else i = flightArrayList.size();
+        }
+        if (flightArrayList.size() == 0) notFound.setText("no data found");
+            //   ListAdapter HotelAdapter = new FlightAdapter(getContext(),flightArrayList);
+        else {
+            ListAdapter HotelAdapter = new FlightAdapter(getContext(), flightNewList);
+            ListView HotelsListView = (ListView) rootView.findViewById(R.id.listview_results);
+            HotelsListView.setAdapter(HotelAdapter);
 
-        HotelsListView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String food = String.valueOf(parent.getItemAtPosition(position));
-                        //Toast.makeText(MainActivity.this, food, Toast.LENGTH_LONG).show();
+            HotelsListView.setOnItemClickListener(
+                    new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            String food = String.valueOf(parent.getItemAtPosition(position));
+                            //Toast.makeText(MainActivity.this, food, Toast.LENGTH_LONG).show();
+                        }
                     }
-                }
-        );
+            );
 
+        }
     }
-
     private int getTripClass(){
 //    trip_class — the flight class:
 //    0 — The economy class (the default value);

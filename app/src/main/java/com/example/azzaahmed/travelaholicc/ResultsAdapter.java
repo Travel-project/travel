@@ -17,10 +17,11 @@ import java.util.ArrayList;
  */
 public class ResultsAdapter extends ArrayAdapter<HotelFlight> {
     private Context context;
-
+  int size;
     ResultsAdapter(Context context,  ArrayList hotels ) {
         super(context, R.layout.result_list ,hotels);
         this.context=context;
+        if(hotels.size()==0) size=0;
     }
 
     @Override
@@ -52,7 +53,10 @@ public class ResultsAdapter extends ArrayAdapter<HotelFlight> {
         starRate.setText(StarRate);
         Rating.setText(Rating_all);
         //image.setImageResource(R.drawable.chunky);
-
+//        TextView notFound =(TextView) convertView.findViewById(R.id.notFound);
+//        notFound.setVisibility(View.GONE);
+//        if(size==0){
+//            notFound.setVisibility(View.VISIBLE);}
         Picasso.with(context)
                 .load(getItem(position).getImagePath()).resize(300, 450)
                 .into((ImageView) convertView.findViewById(R.id.HotelImage));

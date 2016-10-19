@@ -19,10 +19,11 @@ public class HotelAdapter extends ArrayAdapter<Hotel>
 
     {
         private Context context;
-
+int size;
         HotelAdapter(Context context,  ArrayList hotels ) {
             super(context, R.layout.result_list ,hotels);
             this.context=context;
+            if(hotels.size()==0) size=0;
         }
 
         @Override
@@ -48,6 +49,11 @@ public class HotelAdapter extends ArrayAdapter<Hotel>
             starRate.setText(StarRate);
             Rating.setText(Rating_all);
             //image.setImageResource(R.drawable.chunky);
+//            TextView notFound =(TextView) convertView.findViewById(R.id.notFound);
+//            notFound.setVisibility(View.GONE);
+//            if(size==0){
+//
+//                notFound.setVisibility(View.VISIBLE);}
 
         Picasso.with(context)
                 .load(getItem(position).getImage_path()).resize(300, 450)
