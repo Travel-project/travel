@@ -362,7 +362,7 @@ private void ViewUpdate( ){
             else i = hotelArrayList.size();
         }
 
-        if (hotelArrayList.size() == 0) notFound.setText("no data found");
+        if (hotelNewList.size() == 0) notFound.setText("no data found");
             // ListAdapter HotelAdapter = new HotelAdapter(getContext(),hotelArrayList);
         else {
             ListAdapter HotelAdapter = new HotelAdapter(getContext(), hotelNewList);
@@ -393,7 +393,7 @@ private void ViewUpdate( ){
                 flightNewList.add(flightArrayList.get(i));
             else i = flightArrayList.size();
         }
-        if (flightArrayList.size() == 0) notFound.setText("no data found");
+        if (flightNewList.size() == 0) notFound.setText("no data found");
             //   ListAdapter HotelAdapter = new FlightAdapter(getContext(),flightArrayList);
         else {
             ListAdapter HotelAdapter = new FlightAdapter(getContext(), flightNewList);
