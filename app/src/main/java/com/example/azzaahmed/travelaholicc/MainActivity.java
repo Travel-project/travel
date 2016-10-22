@@ -22,6 +22,9 @@ import com.google.android.gms.common.api.Status;
  * Activity to demonstrate basic retrieval of the Google user's ID, email address, and basic
  * profile.
  */
+ //<head>
+ //<meta name='B-verify' content='17009eaa2bc22b4e27b453e75fb84513ebe75def' />
+ //</head >
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         View.OnClickListener {
